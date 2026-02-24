@@ -1,0 +1,7 @@
+file '../images/homepage.png'
+duration 3
+file '../images/upload-flow.png'
+duration 3
+file '../images/result.png'
+duration 3
+file '../images/result.png'
