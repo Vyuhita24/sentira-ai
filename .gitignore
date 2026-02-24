@@ -1,0 +1,46 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.venv/
+venv/
+env/
+
+# =========================
+# IDE / OS
+# =========================
+.vscode/
+.idea/
+.DS_Store
+
+# =========================
+# RAW DATASETS (DO NOT PUSH)
+# =========================
+Database/
+
+# =========================
+# GENERATED TRAINING DATA
+# =========================
+Project/data/
+Project/results/
+
+# =========================
+# TRAINING ARTIFACTS
+# =========================
+*.npy
+*.h5
+
+# Ignore all model artifacts by default
+Project/models/**/*.npy
+Project/models/**/*.pkl
+Project/models/**/*.h5
+
+# =========================
+# ALLOW ONLY PRODUCTION FILES
+# =========================
+!Project/models/universal/universal_model_model.keras
+!Project/models/universal/universal_scaler.pkl

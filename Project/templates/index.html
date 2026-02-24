@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentira AI - Real-Time Voice Emotion &amp; Stress Intelligence</title>
+    <meta name="application-name" content="Sentira AI">
+    <meta name="description" content="Sentira AI provides real-time voice emotion and stress intelligence from live and uploaded audio.">
+    <meta property="og:title" content="Sentira AI">
+    <meta property="og:description" content="Real-Time Voice Emotion &amp; Stress Intelligence">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="app-shell">
+        <header class="hero">
+            <div class="hero-panel">
+                <h1>Sentira AI</h1>
+                <p class="subtitle">Real-Time Voice Emotion &amp; Stress Intelligence</p>
+            </div>
+        </header>
+
+        <section class="tabs" aria-label="Analysis mode">
+            <button type="button" class="tab-btn active" onclick="openTab('live')">
+                <i class="fa-solid fa-microphone"></i>
+                <span>Live Audio</span>
+            </button>
+            <button type="button" class="tab-btn" onclick="openTab('upload')">
+                <i class="fa-solid fa-file-waveform"></i>
+                <span>Audio Upload</span>
+            </button>
+        </section>
+
+        <section class="content-box">
+            <div id="live" class="tab-content active">
+                <h2><i class="fa-solid fa-microphone-lines"></i> Live Voice Analysis</h2>
+                <div class="mic-visualizer" aria-hidden="true">
+                    <span class="wave"></span>
+                    <span class="wave"></span>
+                    <span class="wave"></span>
+                    <span class="wave"></span>
+                    <span class="wave"></span>
+                </div>
+                <button id="record-btn" type="button" class="action-btn" onclick="toggleRecording()">
+                    <i class="fa-solid fa-microphone"></i> START RECORDING
+                </button>
+                <p id="recording-status" class="status-text">Ready to capture audio stream...</p>
+            </div>
+
+            <div id="upload" class="tab-content">
+                <h2><i class="fa-solid fa-cloud-arrow-up"></i> Model Inference from File</h2>
+                <div id="drop-zone" class="upload-area" role="button" tabindex="0" aria-label="Audio upload drop zone">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <p class="upload-main">Drag &amp; Drop Audio File (WAV Only)</p>
+                    <p class="upload-sub">or click to browse</p>
+                    <p id="file-name" class="file-name"></p>
+                </div>
+                <input type="file" id="file-input" accept=".wav,audio/wav" hidden>
+                <button type="button" class="action-btn" onclick="handleAnalyzeClick()">ANALYZE AUDIO FILE</button>
+            </div>
+
+            <div id="result" class="result-box hidden">
+                <h3 class="result-title">AI ANALYSIS RESULT</h3>
+                <div class="result-card">
+                    <div class="result-head">
+                        <p class="emotion-line">Detected Emotion: <span id="emotion-label" class="emotion-label">-</span></p>
+                        <span id="stress-state-badge" class="stress-badge medium">STRESS STATE: MEDIUM</span>
+                    </div>
+
+                    <div class="confidence-row">
+                        <span>Model Confidence</span>
+                        <span id="confidence-value">0%</span>
+                    </div>
+                    <div class="confidence-bar">
+                        <div id="confidence-fill" class="confidence-fill"></div>
+                    </div>
+
+                    <article class="insight-card insight-primary">
+                        <h4><i class="fa-solid fa-brain"></i> AI Vocal Insight</h4>
+                        <p id="vocal-insight">Awaiting model output...</p>
+                    </article>
+
+                    <article class="insight-card insight-secondary">
+                        <h4><i class="fa-solid fa-lightbulb"></i> Suggested Action</h4>
+                        <p id="suggested-action">Upload or record audio to receive a guided suggestion.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Sentira AI Research. Powered by TensorFlow &amp; Librosa.</p>
+        </footer>
+
+        <section class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <article class="faq-item">
+                    <h3>What is Sentira AI?</h3>
+                    <p>Sentira AI is an advanced web application that analyzes speech to detect stress and emotional states using deep learning models.</p>
+                </article>
+                <article class="faq-item">
+                    <h3>Which emotions can it detect?</h3>
+                    <p>The system can detect emotions such as Happy, Sad, Angry, and Neutral, along with stress levels.</p>
+                </article>
+                <article class="faq-item">
+                    <h3>What file formats are supported?</h3>
+                    <p>Currently, only WAV audio files are supported for upload and analysis.</p>
+                </article>
+                <article class="faq-item">
+                    <h3>Is my data private?</h3>
+                    <p>Yes, your data is processed securely and is not stored after analysis.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="contact-section">
+            <h2>Contact Us</h2>
+            <form id="contact-form" class="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+            <p class="contact-info">For business or research inquiries, email us at <a href="mailto:info@sentira.ai">info@sentira.ai</a></p>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
+

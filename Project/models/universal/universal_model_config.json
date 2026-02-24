@@ -1,0 +1,27 @@
+{
+  "emotion_mapping": {
+    "0": "angry",
+    "1": "calm",
+    "2": "disgust",
+    "3": "fearful",
+    "4": "happy",
+    "5": "neutral",
+    "6": "sad",
+    "7": "surprised"
+  },
+  "stress_mapping": {
+    "0": "Stressed",
+    "1": "Not Stressed",
+    "2": "Stressed",
+    "3": "Stressed",
+    "4": "Not Stressed",
+    "5": "Not Stressed",
+    "6": "Stressed",
+    "7": "Not Stressed"
+  },
+  "num_classes": 8,
+  "input_shape": [
+    130,
+    40
+  ]
+}

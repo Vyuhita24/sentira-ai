@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: sentira-ai
+    runtime: docker
+    rootDir: Project
+    dockerfilePath: ./Dockerfile
+    autoDeploy: true
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHONUNBUFFERED
+        value: "1"
+      - key: TF_CPP_MIN_LOG_LEVEL
+        value: "2"
